@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+html {
+    background: url('../images/stpauls-highres.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    height: 100%
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    display: grid;
+    grid-template-rows: 75px auto;
+    grid-template-columns: 1fr;
+    height: 100%;
+    width: 100%;
+    min-width: 1200px;
+    align-items: center;
+    justify-items: center;
+}
+
+/* DOCUMENT CONTAINING ALL STYLES SPECIFIC TO 'signup.html' !!! */
+#signup {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(57, 62, 65, 0.8);
+    /* border: solid green 5px; */
+    height: 400px;
+    width: 300px;
+}
+
+#signup > form {
+    display: grid;
+    grid-template-rows: 0.5fr 1.5fr 0.5fr 1.5fr 0.5fr 1.5fr 0.5fr 1.5fr 3fr;
+    grid-template-columns: 1fr;
+
+    align-items: center;
+    justify-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+#signup > form > label {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0px;
+    width: 75%;
+    margin-bottom: 0px;
+    /* align-self: baseline;
+    align-items: baseline; */
+    align-items: baseline;
+    justify-content: left;
+}
+
+#signup > form > label > p {
+    /* color: #edcb96; */
+    margin: 0px;
+    color: rgb(234, 234, 234);
+    /* align-self: baseline; */
+}
+
+/* #signup > form > input  */
+.signup_row {
+    color: #edcb96;
+    line-height: 50px;
+    font-size: 14pt;
+    font-weight: 500px;
+    border: 0;
+    padding: 0px;
+    border-bottom: solid 1px;
+    background: transparent;
+    text-align: center;
+    width: 75%;
+    height: 75%;
+}
+
+
+.signup_submit {
+    display: block;
+    /* background-color: rgb(57, 62, 65, 0.8); */
+    line-height: 50px;
+    font-size: 14pt;
+    font-weight: 500px;
+    border: 0;
+    padding: 0px;
+    color: #edcb96;
+    width: 50%;
+    height: 50%;
+    color: #edcb96;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+.signup_submit button {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(57, 62, 65, 0.8);
+  /* line-height: 50px; */
+  font-size: 14pt;
+  /* font-weight: 500px; */
+  border: 0;
+  padding-bottom: 5px;
+  color: #edcb96;
+
+}
+
+.signup_submit button:hover {
+  cursor: pointer;
+  color: rgb(234, 234, 234);
+  background-color: rgb(59, 62, 65, 1);
+}

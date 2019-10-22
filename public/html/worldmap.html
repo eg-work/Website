@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+
+    <link rel="stylesheet" type="text/css" href='../css/worldmap-styles.css'>
+    <script type="text/javascript" src='../js/worldmap-script.js' defer></script>
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.get("/static/menu/menu.html", function(data) {
+                $(data).prependTo("#main")
+            })
+        })
+    </script>
+    <!-- <script type="text/javascript" src='../menu/menu-script.js' defer></script> -->
+</head>
+
+
+<body>
+    <div id="main">
+        <div class="worldmapbox">
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+
+            <div class="empty"></div>
+            <object data="../images/blank-worldmap-withpaths-simplified-opt.svg" type="image/svg+xml" id="worldmap">
+            </object>
+            <div class="empty"></div>
+
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+        </div>
+
+        
+       
+
+    </div>
+</body>
+
+
+
+</html>

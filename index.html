@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='static/css/styles.css'>
+    <script type="text/javascript" src='static/js/script.js' defer></script>
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function() {
+            // console.log("1")
+            $.get("static/menu/menu.html", function(data) {
+                // console.log(data)
+                $(data).prependTo("#main")
+            })
+        })
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <div id="main">
+
+        <!-- <div class="menucontainer">
+            <div id="homepage-button">
+                <a href="/">Gawthorpe Industries</a>
+            </div>
+            <ul class="menu">
+                <div class="menubutton" id="information-button">
+                    <a href='/static/html/information.html'>Information</a>
+                </div>
+                <div class="menubutton" id="models-button">
+                    <a href="/static/html/models.html">Models</a>
+                </div>
+                <div class="menubutton" id="community-button">
+                    <a href="/static/html/community.html">Community</a>
+                </div>
+                <div class="menubutton" id="signup-button">
+                    <a href="/static/html/community.html">Sign up</a>
+                </div>
+            </ul>
+        </div> -->
+
+        <!-- <div class="grid1 box">
+            <p>Working document</p>
+            <button type="button">Click me</button>
+        </div>
+
+        <div class="grid2 box">
+            <div class="image-container">
+                <img src="static/images/blank-worldmap.png" alt="worldmap", id="worldmap">
+            </div>
+        </div>
+
+        <div class="grid3 box">
+            <canvas id="canvas" width="600" height="323">
+            </canvas>
+        </div> -->
+        
+
+
+
+      
+        <!-- </div> --> 
+
+    </div>
+</body>
+
+
+
+
+
+</html>

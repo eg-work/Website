@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+html {
+    margin: 0;
+    height: 100%
+} 
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+#main {
+    display: grid;
+    grid-template-rows: 75px auto;
+    grid-template-columns: 1fr;
+    height: 100%;
+    width: 100%;
+    min-width: 1200px;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.worldmapbox {
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    grid-template-columns: 10% 80% 10%;
+
+
+    height: 100%;
+
+    width: 1200px;
+    min-width: 1200px;
+}
+
+#worldmap {
+    height: 100%;
+    width: 100%;
+}

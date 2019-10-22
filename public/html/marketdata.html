@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href='../css/marketdata-styles.css'>
+    <script type="text/javascript" src='../js/marketdata-script.js' defer></script>
+    
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.get("/static/menu/menu.html", function(data) {
+                $(data).prependTo("#main")
+            })
+        })
+    </script>
+    <!-- <script type="text/javascript" src='../menu/menu-script.js' defer></script> -->
+</head>
+
+
+<body>
+    <div id="main">
+
+        <div id="marketdata-menu">
+            <div id="assettype-selector" class="selector">
+                <button class="dropbtn">Choose an asset type</button>
+                <div class="dropdown-content">
+                
+                </div>
+            </div>
+
+            <div id="indexname-selector" class="selector">
+                <button class="dropbtn">Choose an index</button>
+                <div class="dropdown-content">
+            
+                </div>
+            </div>
+
+            <div id="date-selector" class="selector">
+                <button class="dropbtn">Choose a day to view</button>
+                <div class="dropdown-content">
+            
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="plotly-graph">
+            <div id="plotly-changer">
+                
+            </div>
+        </div>
+        
+
+            
+            
+            
+
+
+
+
+    </div>
+</body>
+
+
+
+</html>

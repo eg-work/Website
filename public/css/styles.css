@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+html, body {
+    background: url('../images/stpauls-highres.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    height: 100%
+}
+
+#main {
+    display: grid;
+    grid-template-rows: 75px auto;
+    grid-template-columns: 1fr;
+    height: 100%;
+    width: 100%;
+    min-width: 1200px;
+    align-items: center;
+    justify-items: center;
+}
+
+.box {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+/* #information-button {
+}
+
+#models-button {
+}
+
+#community-button {
+}
+
+#signup-button {
+} */
+
+
+.grid4 {
+    background-color: white;
+    padding: 50px;
+}
+
+
+

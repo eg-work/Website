@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Top menu bar*/
+.menucontainer {
+    background-color: #0B3948;
+    display: inline-grid !important;
+    min-width: 100%;
+    min-height: 75px;
+    grid-template-rows: 100%;
+    grid-template-columns: 10% 30% 10% 40% 10%;
+    align-self: center;
+    justify-self: center;
+}
+
+/* Menu bar*/
+.menu {
+    display: inline-grid;
+    height: 100%;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-template-rows: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    margin: 0px;
+    padding: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+
+    list-style: none;
+}
+
+.menubutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.menubutton:hover {
+    /* background-image: linear-gradient(to top, rgba(5,5,5,0.5), rgba(5,5,5,0.0)); */
+    border-bottom: solid #edcb96 5px;
+    padding-top: 5px;
+}
+
+.menubutton a {
+    color: white;
+    font-weight: 600;
+    /* font-size: 20px; */
+    text-decoration: none;
+}
+
+/* Home button */
+#homepage-button {
+    display: flex;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    /* width: 100%;
+    height: 100%; */
+    justify-self: stretch;
+    justify-content: center;
+    align-self: stretch;
+    align-content: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#homepage-button a {
+    color: white;
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+}

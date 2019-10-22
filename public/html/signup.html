@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='../css/signup-styles.css'>
+    <script type="text/javascript" src='../js/signup-script.js' defer></script>
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.get("/static/menu/menu.html", function(data) {
+                $(data).prependTo("#main")
+            })
+        })
+    </script>
+    <!-- <script type="text/javascript" src='../menu/menu-script.js' defer></script> -->
+</head>
+
+
+<body>
+    <div id="main">
+        <!-- <div id="signupdone">
+
+        </div> -->
+
+
+        <div id="signup">
+            <form>
+                <label for="username"><p>Username</p></label>
+                <input type="text" placeholder="Enter a username" name="username" class="signup_row">
+
+
+
+                <label for="email"><p>Email</p></label>
+                <input type="text" placeholder="Enter a email" name="email" class="signup_row">
+
+
+                <label for="password"><p>Password</p></label>
+                <input type="password" placeholder="Enter a password" name="password" class="signup_row">
+
+                <label for="passwordconfirm"><p>Repeat password</p></label>
+                <input type="password" placeholder="Repeat password" name="passwordconfirm" class="signup_row">
+
+
+                <div class="signup_submit">
+                  <button id="signup_button">Sign up</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</body>
+
+
+
+</html>
