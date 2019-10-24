@@ -1,5 +1,4 @@
-# A sample website, created with Node.js & support via a SQL server
-
+# A sample website, created with Node.js
 
 # Goals
 
