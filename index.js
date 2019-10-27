@@ -143,10 +143,11 @@ app.post('/Data/', function(req, res) {
 
   newdb.all( query_text, [params.asset, params.indice, params.date], (err, rows) => {
     if (err) {
-      return console.error(err.message);
+      return console.error('this is an error message',err.message);
     }
     var filename = rows[0].filename;
-
+    filename = path.join( __dirname, filename );
+    
     const rl = readline.createInterface({
       input: fs.createReadStream( filename ),
       crlfDelay: Infinity
