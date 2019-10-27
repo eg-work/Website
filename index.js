@@ -27,13 +27,140 @@ app.use( express.static('Index') );
 
 
 
+// include sqlite3
+const sqlite3 = require('sqlite3').verbose();
+
+
+
+// test database
+// const testfilepath = path.resolve(__dirname, 'test.db');
+// fs.unlinkSync( testfilepath, deleteFileCallback );
+// function deleteFileCallback(e) {
+//   console.log('delete file callback ->', e);
+// }
+
+var newdb = new sqlite3.Database('./db/test.db', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to test database. OK.');
+});
+
+
+const tabletext = `
+  CREATE TABLE IF NOT EXISTS task(
+    id INT,
+    asset TEXT,
+    indice TEXT,
+    date TEXT,
+    filename TEXT
+  )`;
+newdb.run(tabletext, [], (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Added the new table to test database. OK.');
+});
 
 
 
 
+function populate_table( database ) {
+
+  function get_paths( xs ) {
+    var output = [];
+    for (var i = 0; i < xs.length; i++)
+    {
+      var folderpath  = path.join( __dirname, xs[i] );
+      var foldernames = fs.readdirSync( folderpath );
+      for (var j = 0; j < foldernames.length; j++)
+      {
+        output.push( path.join( xs[i], foldernames[j] ) );
+      }
+    }
+    return output;
+  }
+  function get_all_paths(  ) {
+    var assetpaths  = get_paths( ['Data'] );
+    var indicepaths = get_paths( assetpaths );
+    var datepaths   = get_paths( indicepaths );
+    return datepaths;
+  }
+
+  var paths     = get_all_paths();
+  var filepaths = paths.map(x => path.join( x, 'full.json' ));
+  console.log('paths:', paths);
+  console.log('filepaths:', filepaths);
+
+  var names = paths.map(x => x.split('\\'));
+  console.log('names:', names);
+
+  const inserttext = `
+  INSERT INTO task(id,asset,indice,date,filename) VALUES(?,?,?,?,?)`;
+
+  for (var i = 0; i < names.length; i++)
+  {
+    database.run( inserttext, [i, names[i][1], names[i][2], names[i][3], filepaths[i]] );
+  }
+
+}
+populate_table( newdb );
 
 
+// query database
+function query_database( database ) {
+  let query_text = `
+    SELECT * FROM task
+  `;
 
+  database.all( query_text, [], (err, rows) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    rows.forEach((row) => {
+      console.log('row ->', row);
+    });
+  });
+
+}
+// query_database( newdb );
+
+
+app.post('/Data/', function(req, res) {
+  console.log('data requested', req.body);
+
+  var params = req.body;
+  let query_text = `
+    SELECT DISTINCT filename
+    FROM TASK
+    WHERE asset = ? AND indice = ? AND date = ?`;
+
+  newdb.all( query_text, [params.asset, params.indice, params.date], (err, rows) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    var filename = rows[0].filename;
+
+    const rl = readline.createInterface({
+      input: fs.createReadStream( filename ),
+      crlfDelay: Infinity
+    });
+
+    var rows = [];
+    rl.on('line', (line) => {
+      // console.log('line', line);
+      rows = line;
+    });
+
+    rl.on('close', () => {
+      var data = JSON.parse(rows);
+      console.log(data.valuelist.slice(0,1), '\n', data.valuelist.slice(data.valuelist.length-2,data.valuelist.length-1));
+      res.json( data );
+    });
+
+
+  });
+});
 
 
 
@@ -42,9 +169,8 @@ app.use( express.static('Index') );
 
 
 /* SQlite */
-const dppath = path.resolve(__dirname, 'finance_data.db')
+const dppath = path.resolve(__dirname, 'finance_data.db');
 console.log(dppath);
-const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database(dppath, (err) => {
     if (err) {
         return console.error(err.message);
@@ -181,34 +307,74 @@ app.get('/MarketData/*', function(req, res) {
 
 
 
-app.post('/menuselect/', function(req, res) {
-    // console.log('req');
-    // console.log(req.body);
 
-    var name = req.body.name;
 
-    var idx = 0;
-    if (name == "Market Data") {
-        idx = 1;
+
+// pull folder names
+app.post('/Names/', function(req, res) {
+
+  console.log('\n',req.body);
+
+  var assetname = req.body.assetname;
+  var indexname = req.body.indexname;
+  var datename  = req.body.datename;
+
+
+  if (datename != undefined) {
+    if (datename == 'all') {
+      var foldernames = fs.readdirSync('Data/' + assetname + '/' + indexname + '/');
+      console.log('foldernames (dates all):', foldernames);
+      return res.json({ names: foldernames });
+    } else {
+      // exact date wanted so bring file
+
     }
-    if (name == "Sign up") {
-        idx = 2;
-    }
+  }
+
+  if (indexname == 'all') {
+    var foldernames = fs.readdirSync('Data/' + assetname + '/');
+    console.log('foldernames: (indexs all)', foldernames);
+    return res.json({ names: foldernames });
+  }
+
+
+  if (assetname == 'all') {
+    var foldernames = fs.readdirSync('Data/');
+    foldernames = foldernames.filter(x => !x.includes('-'));
+    console.log('foldernames: (assets all)', foldernames);
+    return res.json({ names: foldernames });
+  }
 
 
 
 
 
-    res.json({});
+  res.json({});
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(port, () => console.log('Example app listening on port ${port}!'));
-
-
-//  // close database
-//  db.close((err) => {
-//     if (err) {
-//         return console.error(err.message);
-//     }
-//     console.log("Close the database connection");
+// close database
+// newdb.close((err) => {
+//   if (err) {
+//       return console.error(err.message);
+//   }
+//   console.log("Close the database connection");
 // });
+
+
+// remove file
+// var database_filepath = 'C:\\Users\\Owner\\Desktop\\WebsiteNew\\Website\\test.db';
+// fs.unlinkSync( 'test.db' );

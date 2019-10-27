@@ -19,6 +19,11 @@ function continent_events_over(ev) {
         count++;
         // if (count == 0) console.log("PS list:", previous_style);
         x.setAttribute('style', previous_style.join(';'));
+
+
+        // change world name
+        var continentname = x.parentElement.id.replace('_',' ');
+        $('#worldmapname').text(continentname);
     });
 }
 
@@ -36,6 +41,10 @@ function continent_events_out(ev) {
         // if (count == 0) console.log("PS list:", previous_style);
         count++;
         x.setAttribute('style', previous_style.join(';'));
+
+
+        // reset world name
+        $('#worldmapname').text("Hover over a continent to see it's name");
     });
 }
 
@@ -82,9 +91,9 @@ t.addEventListener("load", function() {
         all_continents[i].addEventListener("mouseover", continent_events_over);
         all_continents[i].addEventListener( "mouseout", continent_events_out);
     }
-   
-   
-   
+
+
+
     // console.log("Result", result);
     // console.log("Layer", layer);
     // console.log("Layer-children", layer.children);
@@ -92,5 +101,5 @@ t.addEventListener("load", function() {
 
 
 
-    
+
 }, false);
