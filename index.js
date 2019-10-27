@@ -147,23 +147,32 @@ app.post('/Data/', function(req, res) {
     }
     var filename = rows[0].filename;
 //     filename = path.join( __dirname, filename );
+     
+    // new code
+    var data = fs.readFileSync( filename, 'utf-8' );
+    data = JSON.parse(data);
+    console.log(typeof data);
+    console.log(Object.keys(data));
+    console.log(data['valuelist'].slice(0,10));
+    res.json( data );
     
-    const rl = readline.createInterface({
-      input: fs.createReadStream( filename ),
-      crlfDelay: Infinity
-    });
+    
+//     const rl = readline.createInterface({
+//       input: fs.createReadStream( filename ),
+//       crlfDelay: Infinity
+//     });
 
-    var rows = [];
-    rl.on('line', (line) => {
-      // console.log('line', line);
-      rows = line;
-    });
+//     var rows = [];
+//     rl.on('line', (line) => {
+//       // console.log('line', line);
+//       rows = line;
+//     });
 
-    rl.on('close', () => {
-      var data = JSON.parse(rows);
-      console.log(data.valuelist.slice(0,1), '\n', data.valuelist.slice(data.valuelist.length-2,data.valuelist.length-1));
-      res.json( data );
-    });
+//     rl.on('close', () => {
+//       var data = JSON.parse(rows);
+//       console.log(data.valuelist.slice(0,1), '\n', data.valuelist.slice(data.valuelist.length-2,data.valuelist.length-1));
+//       res.json( data );
+//     });
 
 
   });
