@@ -145,7 +145,7 @@ app.post('/Data/', function(req, res) {
     if (err) {
       return console.error('this is an error message',err.message);
     }
-    var filename = rows[0].filename;
+    var filename = rows[0].filename.replace('\\', '/');
 //     filename = path.join( __dirname, filename );
      
     // new code
