@@ -7,7 +7,13 @@
 const express = require('express');
 const url = require('url');
 const app = express();
-const port = 4000;
+
+// for heroku 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+// const port = 4000;
 
 var path = require('path');
 var jquery = require('jquery');
