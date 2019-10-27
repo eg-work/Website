@@ -146,7 +146,7 @@ app.post('/Data/', function(req, res) {
       return console.error('this is an error message',err.message);
     }
     var filename = rows[0].filename;
-    filename = path.join( __dirname, filename );
+//     filename = path.join( __dirname, filename );
     
     const rl = readline.createInterface({
       input: fs.createReadStream( filename ),
