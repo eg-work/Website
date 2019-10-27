@@ -1,5 +1,8 @@
 # A sample website, created with Node.js
 
+# Website link
+[Link to the website](https://eg-sample-website.herokuapp.com/static/html/marketdata.html#)
+
 # Goals
 Illustrate proficiency and gain further understanding of the following technologies,
 
