@@ -1,8 +1,9 @@
-# Website
-
+# A sample website, created with Node.js
 
 # Goals
+Illustrate proficiency and gain further understanding of the following technologies,
 
+* Node
 * Html
 * CSS
 * JavaScript
