@@ -9,5 +9,12 @@ Illustrate proficiency and gain further understanding of the following technolog
 * JavaScript
 * SQL
 
+# Selecting a data set
+![Financial data selection gif](https://github.com/eg-work/Website/blob/master/misc/simplefinancedata.gif)
+
+# Show continents on a world map
+![World map selection gif](https://github.com/eg-work/Website/blob/master/misc/worldmap.gif)
+
+
 # Sample from the "Sign up" page
-![Website sample image](https://github.com/eg-work/Website/blob/master/website_sample.png)
+![Website sample image](https://github.com/eg-work/Website/blob/master/misc/website_sample.png)
